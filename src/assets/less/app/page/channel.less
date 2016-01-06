@@ -1,0 +1,75 @@
+.channel-search {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.channel-user {
+  text-align: center;
+  margin: 0 auto 15px;
+  padding: 15px 60px;
+  border-bottom: 1px solid #eee;
+
+  &:after {
+    content: " ";
+    clear: both;
+    height: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  em {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    font-style: normal;
+    color: #999;
+  }
+
+  a {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    max-width: 49%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.channel-list {
+  overflow-y: scroll;
+  height: 450px;
+
+  dl {
+    border-bottom: 1px dotted #eee;
+    position: relative;
+  }
+
+  dt {
+    padding: 10px;
+    font-size: 180%;
+    font-weight: normal;
+    color: #999;
+    position: absolute;
+  }
+
+  dd {
+    padding: 10px 10px 10px 60px;
+  }
+
+  button {
+    margin-right: 1px;
+    margin-bottom: 5px;
+    border: none;
+    outline: none !important;
+    max-width: 49%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.channel-tree {
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  max-height: 300px;
+}
