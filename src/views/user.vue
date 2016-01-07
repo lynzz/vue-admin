@@ -8,12 +8,25 @@
 
     </div>
   </div>
-  <modal :show.sync="showModal"></modal>
+  <modal :show.sync="showModal" title="修改用户">
+    <div slot="modal-body">
+      <validator name="validation">
+        <bs-form>
+          <form-group label="用户名" :class="$validation.username.valid ? 'has-success' : 'has-error'">
+            <input class="form-control" v-model="userData.username" v-validate:username="['required']">
+            <div class="help-block" v-if="$validation.username.required">请填写用户名</div>
+          </form-group>
+        </bs-form>
+      </validator>
+    </div>
+  </modal>
 </template>
 
 <script>
 import grid from '../components/grid.vue'
 import modal from '../components/modal.vue'
+import bsForm from '../components/form.vue'
+import formGroup from '../components/form-group.vue'
 
 import sidebarView from './sidebar.vue'
 
@@ -23,6 +36,8 @@ module.exports = {
       pageSize: 5,
       hasCheckbox: true,
       showModal: false,
+      
+      
       userMenus:[{
         icon: 'fa fa-user',
         text: '用户中心',
@@ -31,14 +46,17 @@ module.exports = {
           text: '用户列表'
         }]
       }],
+      userData: {
+        username: 'lxxx'
+      },
       gridColumns:[{
         field: 'id',
         displayName: 'ID'
       }, {
-        field: 'name',
+        field: 'username',
         displayName: '用户名',
         render(row, column) {
-          return '<a href="{{url}}">{{name}}</a>'
+          return '<a href="{{url}}">{{username}}</a>'
         }
       }, {
         displayName: '操作',
@@ -71,8 +89,9 @@ module.exports = {
         validate: 'required',
         placeholder: '请填写权力'
       }];
-      console.log('edit');
+      //this.$set('userData', data);
       this.$set('showModal', true);
+
       /*this.$set('formFields', formFields);
       this.$set('showModal', true);*/
     },
@@ -88,6 +107,8 @@ module.exports = {
   components: {
     modal,
     grid,
+    formGroup,
+    bsForm,
     sidebarView
   }
 }

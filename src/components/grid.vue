@@ -242,7 +242,8 @@ module.exports = {
     },
 
     onAction(e) {
-      this.$parent.$emit(e.currentTarget.dataset.action, e, this.data);
+      let dataset = e.currentTarget.dataset;
+      this.$parent.$emit(dataset.action, e, this.data);
     }
 
 

@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
     listData.push({
       id: id,
       url: '#!/user/' + id,
-      name: 'Chuck Norris ' + id
+      username: 'Chuck Norris ' + id
     });
   }
   var data = {
